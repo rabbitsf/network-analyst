@@ -22,9 +22,15 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Environment variables
+# Environment variables and API keys
 .env
 .env.local
+.env.*
+*.key
+*_key.txt
+*_api_key.txt
+config.ini
+secrets.json
 
 # Analysis results
 analyses/
