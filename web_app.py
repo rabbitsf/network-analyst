@@ -1,11 +1,30 @@
 # web_app.py
 import os
 import tempfile
+import json
+from pathlib import Path
 from flask import Flask, request, render_template, redirect, url_for, flash
 from pcap_agent import analyze_pcap_with_llm  # re-use your existing logic
 
 app = Flask(__name__)
 app.secret_key = "change-me-in-real-life"  # needed for flash messages
+
+# Load labels from labels.json
+def load_labels():
+    """Load labels from labels.json file."""
+    labels_path = Path("labels.json")
+    if labels_path.exists():
+        try:
+            with open(labels_path, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            return {}
+    return {}
+
+def get_labels_for_file(filename: str) -> dict:
+    """Get labels for a specific filename. Returns a dict with keys like 'issue_category', 'traffic_type', 'notes', etc."""
+    labels = load_labels()
+    return labels.get(filename, {})
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -34,19 +53,23 @@ def upload():
         try:
             analysis_text = analyze_pcap_with_llm(temp_path)	
             from datetime import datetime
-            import json
-            from pathlib import Path
 
             def save_analysis(original_filename: str, analysis_text: str):
                 out_dir = Path("analyses")
                 out_dir.mkdir(exist_ok=True)
 
+                # Get labels for this file (returns a dict with issue_category, traffic_type, notes, etc.)
+                file_labels = get_labels_for_file(original_filename)
+
                 record = {
                     "timestamp_utc": datetime.utcnow().isoformat() + "Z",
                     "original_filename": original_filename,
                     "analysis": analysis_text,
-                    # later you can add: "summary": summary_dict, "flow_stats": flow_stats, ...
                 }
+                
+                # Add labels if they exist (non-empty dict)
+                if file_labels:
+                    record["labels"] = file_labels
 
                 # simple id based on timestamp
                 fname = datetime.utcnow().strftime("%Y%m%d-%H%M%S") + ".json"

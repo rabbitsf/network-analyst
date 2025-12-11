@@ -1,0 +1,32 @@
+{
+    "airtunes-1.pcap": {
+        "issue_category": "Normal",
+        "traffic_type": "Apple AirTunes protocol as used by AirPort",
+        "notes": "Sample of benign AirPlay/AirTunes multicast/streaming traffic."
+    },   
+    "apache-cassandra-cql-v3.pcapng": {
+        "issue_category": "Normal",
+        "traffic_type": "CQL binary protocol version 3",
+        "notes": "Sample of CQL binary protocol version 3 traffic."
+    },
+    "dns-remoteshell.pcap": {
+        "issue_category": "C2 / Unauthorized Remote Shell via DNS Port (Port Evasion)",
+        "traffic_type": "Suspicious / Non-DNS Traffic on Port 53 (Possible Remote Shell)",
+        "notes": "Sample of DNS Anomaly caused by remoteshell riding on DNS port."
+    },
+    "teardrop.pcap": {
+        "issue_category": "DoS: Malformed IP Fragmentation",
+        "traffic_type": "Malformed IP Fragmentation Traffic",
+        "notes": "Sample of overlapping IP fragments in a Teardrop attack."
+    },
+    "DNS exploit-1.pcap": {
+        "issue_category": "DNS Exploit",
+        "traffic_type": "Malformed DNS Traffic",
+        "notes": "Sample of Malformed DNS Message (Recursive Compression Pointer)"
+    },
+    "DNS exploit-2.pcap": {
+        "issue_category": "DNS Exploit",
+        "traffic_type": "Malformed DNS Traffic",
+        "notes": "Sample of Malformed DNS Message (Cyclic Compression Pointers)"
+    }
+}

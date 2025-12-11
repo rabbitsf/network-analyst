@@ -26,6 +26,6 @@ Thumbs.db
 .env
 .env.local
 
-# Analysis results (optional - uncomment if you don't want to track these)
-# analyses/
+# Analysis results
+analyses/
 
