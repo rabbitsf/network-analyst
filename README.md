@@ -239,7 +239,19 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-[Add your license here]
+## License & Usage Notice
+
+This repository is **public for viewing purposes only**.
+
+⚠️ **No license is granted for using, copying, modifying, or distributing this code.**  
+All rights are strictly reserved by the author.
+
+If you would like to use any part of this source code in your own project—whether
+commercial or non-commercial—you **must obtain a written license** from the author.
+
+To request a license or discuss usage terms, please contact:
+📧 lk_fung @ yahoo.com  
+
 
 ## 🙏 Acknowledgments
 
